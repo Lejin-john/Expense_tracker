@@ -1,0 +1,30 @@
+<!-- expenses/templates/expenses/add_expense.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense</title>
+</head>
+<body>
+    <h1>Add Expense</h1>
+    <form method="post" action="{% url 'add_expense' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+
+Explanation:
+{% for expense in expenses %}: This Django template tag is a loop that iterates over each expense in the expenses list, which is passed from the view.
+
+{{ expense }}: This Django template variable displays the information about each expense.
+
+{% csrf_token %}: This is a security feature in Django forms to prevent Cross-Site Request Forgery attacks. You include it in your forms.
+
+{{ form.as_p }}: This is a Django form rendering method that outputs each form field wrapped in a paragraph (<p>) tag.
+
+{% url 'add_expense' %}: This Django template tag generates the URL for the 'add_expense' view. It's used as the action attribute of the form, directing the form submission to the 'add_expense' URL.
